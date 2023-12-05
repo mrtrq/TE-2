@@ -53,10 +53,10 @@ adj = [ [ 0, 1, 1, 1, 0 ] ,
 
 N = len(adj)
 
-# if (Hamiltonian_path(adj, N)):
-# 	print("YES")
-# else:
-# 	print("NO")
+if (Hamiltonian_path(adj, N)):
+	print("YES")
+else:
+	print("NO")
 
 # This code is contributed by maheshwaripiyush9
 
@@ -133,28 +133,15 @@ graph_20_edges = [
     [1, 1, 1, 1, 0]
 ]
 
-# Run the test cases
-run_hamiltonian_path_test(graph_16_edges, "16 Edges")
-run_hamiltonian_path_test(graph_18_edges, "18 Edges")
-run_hamiltonian_path_test(graph_20_edges, "20 Edges")
+# list_of_graphs = [graph_16_edges, graph_18_edges, graph_20_edges]
+# for i in range(3):
+#     N = len(list_of_graphs[i])
 
-# # Driver Code
-# adj = [
-#     [0, 1, 1, 1, 0],
-#     [1, 0, 1, 0, 1],
-#     [1, 1, 0, 1, 1],
-#     [1, 0, 1, 0, 0]
-# ]
+#     start_time = time.time()
+#     if Hamiltonian_path(list_of_graphs[i], N):
+#         print("YES")
+#     else:
+#         print("NO")
+#     end_time = time.time()
 
-for i in range(3):
-    Hamiltonian_path(gra)
-    N = len(adj)
-
-    start_time = time.time()
-    if Hamiltonian_path(adj, N):
-        print("YES")
-    else:
-        print("NO")
-    end_time = time.time()
-
-    print(f"Execution Time: {(end_time - start_time)*1_000} miliseconds")
+#     print(f"Execution Time: {(end_time - start_time)*1_000} miliseconds")
