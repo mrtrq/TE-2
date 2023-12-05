@@ -2,6 +2,7 @@ import random
 from cycle import Graph
 from path import Hamiltonian_path
 import time
+import resource
 
 def generate_graph(n, probability=0.3):
     if n < 2:
@@ -24,7 +25,7 @@ def print_graph(graph):
 
 # Generating graphs with 16,18, and 20 vertices
 vertices = [16,18,20]
-for i in range(3):
+for i in range(len(vertices)):
     n = vertices[i]
     generated_graph = generate_graph(n)
     print(f"Generated Graph with {n} vertices:\n")
@@ -32,27 +33,35 @@ for i in range(3):
     n_graph = Graph(n)
     n_graph.graph = generated_graph
 
+    '''Backtracking'''
     print('Backtracking: \n')
+    start_memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     start_time = time.time()
-    n_graph.hamCycle()
+    n_graph.hamPath()
     print()
     time_elapsed = time.time() - start_time
+    end_memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    
+    memory_used = (end_memory - start_memory) / 1024  # Convert to kilobytes
     print("Time elapsed: " + str(time_elapsed) + " miliseconds\n")
+    print("Memory used: " + str(memory_used) + " KB\n")
 
 
-
+    '''DP'''
     print('Dynamic Programming: \n')
+    start_memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     start_time = time.time()
     result = Hamiltonian_path(generated_graph,n)
     time_elapsed = time.time() - start_time
+    end_memory = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+
+    memory_used = (end_memory - start_memory) / 1024  # Convert to kilobytes
+
     if (result):
         print("YES")
     else:
         print("NO")
     
     print("Time elapsed: " + str(time_elapsed) + " miliseconds")
+    print("Memory used: " + str(memory_used) + " KB\n")
     print('\n-----------------')
-
-    # g16 = Graph(16)
-    # g16.graph = generated_graph
-    # g16.hamCycle()
